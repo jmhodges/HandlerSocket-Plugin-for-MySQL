@@ -1,4 +1,4 @@
-SUBDIRS= libhsclient handlersocket client
+SUBDIRS= hsutils libhsclient handlersocket client
 
 perl:
 	cd perl-Net-HandlerSocket && perl Makefile.PL && make

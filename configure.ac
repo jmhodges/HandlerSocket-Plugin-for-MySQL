@@ -5,7 +5,7 @@
 AC_INIT([handlersocket-plugin], [1.0.6], [Yoshinori.Matsunobu@gmail.com])
 AC_CONFIG_HEADERS([config.h])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
-AC_CONFIG_SRCDIR([libhsclient/fatal.cpp])
+AC_CONFIG_SRCDIR([hsutils/fatal.cpp])
 
 AC_PROG_CC
 AC_PROG_CXX
@@ -102,6 +102,7 @@ CXXFLAGS="$CXXFLAGS -Wall -g -fno-rtti -fno-exceptions -fPIC -DPIC"
 
 #TODO
 AC_CONFIG_FILES([Makefile
+                 hsutils/Makefile
                  handlersocket/Makefile
                  libhsclient/Makefile
                  client/Makefile])
