@@ -745,6 +745,22 @@ dbcontext::cmd_find_internal(dbcallback_i& cb, const prep_stmt& pst,
   }
 }
 
+/*
+  This attempts to add a prepared statement to the connection passed
+  into it as cb for the grouping of (database,table,index,columns). If
+  it is unable to do so, it writes back on the wire (again, contained
+  in cb) an error code and message. It's doing a lot of work for what
+  should be a very low-level action.
+
+  Also, it handles the look up to see if you passed in an index as a
+  string or as an number. If a number, it looks it up in the
+  dbcontext's (the instance object we are in) table_vec
+  member. Otherwise, it tries to add it to the table_map and possibly
+  the table_vec if it's not in the table_map.
+
+  Holy crap it is doing so much work.
+*/
+
 void
 dbcontext::cmd_open_index(dbcallback_i& cb, size_t pst_id, const char *dbn,
   const char *tbl, const char *idx, const char *retflds)
